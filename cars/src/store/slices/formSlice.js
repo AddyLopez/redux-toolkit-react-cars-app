@@ -19,5 +19,5 @@ const formSlice = createSlice({
   },
 });
 
-export const { changeName, changeCost } = formSlice.actions; // destructure action creators from actions object
+export const { changeName, changeCost } = formSlice.actions; // destructures action creators from actions object
 export const formReducer = formSlice.reducer; // formSlice.reducer is the single combined reducer
