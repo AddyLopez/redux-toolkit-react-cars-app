@@ -45,7 +45,7 @@ const CarForm = () => {
           </div>
 
           <div className="field">
-            <label className="label">Name</label>
+            <label className="label">Cost</label>
             <input
               className="input is-expanded"
               value={cost || ""}
