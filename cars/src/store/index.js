@@ -14,4 +14,5 @@ const store = configureStore({
   },
 });
 
+// Exports the store along with all actions from all slices. Doing so makes this module the central place for components to access any action they might need.
 export { store, addCar, removeCar, changeSearchTerm, changeName, changeCost };
