@@ -21,7 +21,7 @@ const CarForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // dispatch addCar action with an object as action.payload
+    // dispatch addCar action to update the "cars" state with an object as action.payload
     dispatch(
       addCar({
         name,
