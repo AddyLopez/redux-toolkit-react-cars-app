@@ -4,14 +4,10 @@ import { changeName, changeCost } from "../store"; // action creator
 const CarForm = () => {
   const dispatch = useDispatch();
 
-  // useSelector hook gives to access state
-  const { name, cost } = useSelector((state) => {
-    // state argument represents whole state object
-    return {
-      name: state.form.name,
-      cost: state.form.cost,
-    }; // component only needs access to name and cost pieces of state
-  });
+  // useSelector hook gives to access state. state argument below represents whole state object
+  // component only needs access to name and cost pieces of state
+  const name = useSelector((state) => state.form.name);
+  const cost = useSelector((state) => state.form.cost);
 
   const handleNameChange = (event) => {
     dispatch(changeName(event.target.value)); // dispatch changeName action to update state, provide user text input as argument for action.payload
