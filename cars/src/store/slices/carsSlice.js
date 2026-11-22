@@ -1,5 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit"; // nano id function from redux toolkit generates a random id
 
+// The carsSlice takes care of state related to displaying the list of cars: changing the search term, plus adding and removing cars based on user's interactions
 const carsSlice = createSlice({
   name: "cars",
   initialState: {
