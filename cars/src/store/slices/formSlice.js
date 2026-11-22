@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// The formSlice takes care of state related to the form: updating the name and updating the cost based on the user's input
 const formSlice = createSlice({
   name: "form",
   initialState: {
