@@ -1,12 +1,15 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { removeCar } from "../store"; // action creator
 
 const CarList = () => {
+  const dispatch = useDispatch();
+
   const cars = useSelector((state) => {
     return state.cars.carsList; // component only needs access to cars slice of state
   });
 
   const handleCarDelete = (car) => {
-    // ...
+    dispatch(removeCar(car.id)); // dispatch removeCar action with car.id as action.payload
   };
 
   const renderedCars = cars.map((car) => {
