@@ -4,8 +4,11 @@ import { removeCar } from "../store"; // action creator
 const CarList = () => {
   const dispatch = useDispatch();
 
-  const cars = useSelector((state) => {
-    return state.cars.carsList; // component only needs access to cars slice of state
+  // In useSelector below, carsList and searchTerm properties on cars slice of state are destructured from full state object
+  const cars = useSelector(({ cars: { carsList, searchTerm } }) => {
+    return carsList.filter((car) => {
+      return car.name.toLowerCase().includes(searchTerm.toLowerCase()); // return car(s) rom list that include(s) the given search term
+    });
   });
 
   const handleCarDelete = (car) => {
