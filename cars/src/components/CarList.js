@@ -1,15 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 import { removeCar } from "../store"; // action creator
+
+// memoize list of cars to resolve a warning
+const memoizedCars = createSelector(
+  [(state) => state.cars.carsList, (state) => state.cars.searchTerm],
+  (carsList, searchTerm) =>
+    carsList.filter(
+      (car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()), // return car(s) rom list that include(s) the given search term
+    ),
+);
 
 const CarList = () => {
   const dispatch = useDispatch();
 
-  // In useSelector below, carsList and searchTerm properties on cars slice of state are destructured from full state object
-  const cars = useSelector(({ cars: { carsList, searchTerm } }) => {
-    return carsList.filter((car) => {
-      return car.name.toLowerCase().includes(searchTerm.toLowerCase()); // return car(s) rom list that include(s) the given search term
-    });
-  });
+  const cars = useSelector(memoizedCars);
 
   const handleCarDelete = (car) => {
     dispatch(removeCar(car.id)); // dispatch removeCar action with car.id as action.payload
